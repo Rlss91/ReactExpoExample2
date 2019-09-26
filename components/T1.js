@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, TouchableHighlight } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 export default function T1() {
+    const [btnWidth, setBtnWidth] = useState(Dimensions.get('window').width / 8)
+    useEffect(() => {
+        const handleUpdateOrientation = () => { setBtnWidth(Dimensions.get('window').width / 8) }
+        Dimensions.addEventListener('change', handleUpdateOrientation)
+        return () => {
+            Dimensions.removeEventListener('change', handleUpdateOrientation)
+        }
+    }, [])
+    const styles = StyleSheet.create({
+        txt: {
+            fontSize: btnWidth
+        }
+    })
     return (
         <View>
-            <Text>T1</Text>
+            <Text style={styles.txt}>T1</Text>
         </View>
     );
+
 }
 
