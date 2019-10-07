@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import T1 from './components/T1'
 import T2 from './components/T2'
+import TN from './components/NativeScreen/TN'
 import Button from './components/utils/Button'
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
+    <TN />
       {tf ? <T1 /> : <T2 />}
       <Button style={styles.btn} onPress={handlePress}>{tf ? 'Go to t2' : 'Go to t1'}</Button>
       {/* <TouchableOpacity style={styles.btn} onPress={handlePress}>
